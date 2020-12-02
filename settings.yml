@@ -1,0 +1,4 @@
+group_page_map:
+  description: "group to URL list"
+  type: list
+  default: ""

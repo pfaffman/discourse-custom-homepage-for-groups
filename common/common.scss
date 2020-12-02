@@ -1,0 +1,4 @@
+// Hide homepage user setting to avoid confusion
+.user-preferences .control-group.home {
+    display: none;
+}

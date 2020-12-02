@@ -1,0 +1,13 @@
+<script type="text/discourse-plugin" version="0.8">
+    const user = api.getCurrentUser();
+    const { setDefaultHomepage } = require('discourse/lib/utilities');
+    if (settings.group_page_map && user.primary_group_name) {
+      map = settings.group_page_map.split('|');
+      console.log(user.primary_group_name);
+      console.log(map);
+      const thing = map.find(value => RegExp(user.primary_group_name).test(value));
+      const url= thing.split(',')[1];
+      console.log (url);
+      setDefaultHomepage(url);
+    }
+</script>
