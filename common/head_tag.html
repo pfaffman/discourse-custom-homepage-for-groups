@@ -2,8 +2,8 @@
     const user = api.getCurrentUser();
     const { setDefaultHomepage } = require('discourse/lib/utilities');
     if (user && settings.group_page_map && user.primary_group_name) {
-      var myMap = settings.group_page_map.replace(',',':').split('|');
-      const mapEntry = myMap.find(value => RegExp(user.primary_group_name).test(value));
+      var groupMap = settings.group_page_map.replace(',',':').split('|');
+      const mapEntry = groupMap.find(value => RegExp(user.primary_group_name).test(value));
 			if (mapEntry) {
       const url= mapEntry.split(':')[1];
       setDefaultHomepage(url);
