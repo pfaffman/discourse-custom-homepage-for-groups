@@ -2,7 +2,7 @@
     const user = api.getCurrentUser();
     const { setDefaultHomepage } = require('discourse/lib/utilities');
     if (settings.group_page_map && user.primary_group_name) {
-      map = settings.group_page_map.replace(',',':').split('|');
+      let map = settings.group_page_map.replace(',',':').split('|');
       const mapEntry = map.find(value => RegExp(user.primary_group_name).test(value));
 			if (mapEntry) {
       const url= mapEntry.split(':')[1];
