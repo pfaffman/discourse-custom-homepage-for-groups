@@ -1,4 +1,8 @@
 group_page_map:
-  description: "group to URL list"
+  description: "Group_name:URL list as <br>For example, trust_level_1:/latest"
   type: list
+  default: ""
+anon_page:
+  description: "The URL for users who aren't logged in"
+  type: string
   default: ""
