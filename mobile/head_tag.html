@@ -4,21 +4,5 @@
     if (settings.Mobile_homepage) {
         setDefaultHomepage(settings.Mobile_homepage);
 }
-else {
-    	if (user && user.primary_group_name) {
-    		if (settings.Group_page_map) {
-     			var groupMap = settings.Group_page_map.replace(',',':').split('|');
-     			const mapEntry = groupMap.find(value => RegExp(user.primary_group_name).test(value));
-				if (mapEntry) {
-      				const url= mapEntry.split(':')[1];
-      				setDefaultHomepage(url);
-				}
-		}
-   	} 
-	 else {
-	 	if (settings.Anon_page) {
-	 	setDefaultHomepage(settings.Anon_page);
-		}
-	}
-}
+
 </script>
