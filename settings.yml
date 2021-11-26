@@ -1,5 +1,5 @@
 Group_page_map:
-  description: "This applies when the primary group of the user.<br>Input it as group_name:URL. Can be several entries.<br>For example, trust_level_1:/latest"
+  description: "This applies when the primary group of the user.<br>Input it as group_name:relative_URL. Can be several entries.<br>For example, trust_level_1:/latest.<br>Can only be used for internal pages."
   type: list
   default: ""
 Anon_page:
