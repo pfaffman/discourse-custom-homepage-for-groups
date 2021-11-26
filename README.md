@@ -1,6 +1,8 @@
 # discourse-custom-homepage-for-groups
-This Fork is to add two features:
-1. Allow an Anon homepage
-1. Allow a different mobile homepage
+This Discourse Theme Component allows customisation of the default homepage for users.
 
-# Currently Not Working
+It allows you to control the desktop homepage by primary group and for anonymous users.
+
+It also allows you to make the mobile homepage different to the desktop homepage.
+
+See the documentation in meta.discourse.org for more details.
