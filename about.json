@@ -3,7 +3,7 @@
   "component": true,
   "license_url": "https://github.com/nathan-nz/discourse-custom-homepage/blob/main/LICENSE",
   "about_url": "https://meta.discourse.org/t/custom-homepage-for-groups/199623",
-  "authors": "pfaffman","nathan-nz"
+  "authors": "pfaffman","nathan-nz",
   "theme_version": null,
   "minimum_discourse_version": null,
   "maximum_discourse_version": null,
