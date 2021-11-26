@@ -11,6 +11,7 @@ Mobile_homepage:
   type: enum
   default: ""
   choices:
+    - ""
     - latest
     - categories
     - new
