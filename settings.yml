@@ -1,8 +1,18 @@
-group_page_map:
+Group_page_map:
   description: "Group_name:URL list as <br>For example, trust_level_1:/latest"
   type: list
   default: ""
-anon_page:
+Anon_page:
   description: "The URL for users who aren't logged in"
   type: string
   default: ""
+Mobile_homepage:
+  description: "What mobile users see. If left blank, will be the same as above"
+  type: enum
+  default: ""
+  choices:
+    - latest
+    - categories
+    - new
+    - unread
+    - top
