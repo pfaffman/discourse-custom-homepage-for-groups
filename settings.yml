@@ -3,7 +3,7 @@ Group_page_map:
   type: list
   default: ""
 Anon_page:
-  description: "The URL for users who aren't logged in.<br>If left blank, will use site default."
+  description: "The relative URL for users who aren't logged in.<br>If left blank, will use site default."
   type: string
   default: ""
 Mobile_homepage:
