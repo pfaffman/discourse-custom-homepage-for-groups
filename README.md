@@ -5,4 +5,4 @@ It allows you to control the desktop homepage by primary group and for anonymous
 
 It also allows you to make the mobile homepage different to the desktop homepage.
 
-See the documentation in meta.discourse.org for more details.
+See the documentation here: https://meta.discourse.org/t/199623
