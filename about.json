@@ -1,7 +1,7 @@
 {
-  "name": "Custom Homepage for Groups",
+  "name": "Discourse Custom Homepage",
   "component": true,
-  "license_url": null,
+  "license_url": "https://github.com/nathan-nz/discourse-custom-homepage/blob/main/LICENSE",
   "about_url": "https://meta.discourse.org/t/custom-homepage-for-groups/199623",
   "authors": "pfaffman",
   "theme_version": null,

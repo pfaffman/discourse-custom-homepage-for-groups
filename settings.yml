@@ -1,4 +1,12 @@
-group_page_map:
-  description: "group to URL list"
+Group_page_map:
+  description: "This applies when the primary group of the user.<br>Input it as group_name:relative_URL. Can be several entries.<br>For example, trust_level_1:/latest.<br>Can only be used for internal pages."
   type: list
+  default: ""
+Anon_page:
+  description: "The relative URL for users who aren't logged in.<br>If left blank, will use site default."
+  type: string
+  default: ""
+Mobile_homepage:
+  description: "What mobile users see. Relative URL.<br>If left blank, will be the same as above"
+  type: string
   default: ""
