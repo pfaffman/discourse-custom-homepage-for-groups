@@ -25,16 +25,19 @@ export default {
           );
           if (mapEntry) {
             const url = mapEntry.split(":")[1];
-            window.console.log("map url", url);
             setDefaultHomepage(url);
+            window.console.log("calling ajax", url);
+
             ajax(url, {
               type: "GET",
             })
               .then(function (result) {
-                window.console.log("reulst", result);
+                window.console.log("result", result);
                 if (Number.isInteger(result)) {
                   let url = `/c/${result}`;
                   setDefaultHomepage(url);
+                  window.console.log("setting url and route");
+
                   DiscourseURL.routeTo(url);
                 }
               })
