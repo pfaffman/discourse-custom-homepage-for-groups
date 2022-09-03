@@ -34,8 +34,8 @@ export default {
               .then(function (result) {
                 window.console.log("result", result);
                 if (result) {
-                  setDefaultHomepage(url);
                   window.console.log(`setting url and route ${url}`);
+                  setDefaultHomepage(url);
                   DiscourseURL.routeTo(url);
                 }
               })
@@ -43,9 +43,9 @@ export default {
                 console.log("error on then", { err });
               })
               .finally(function () {
+                window.console.log(`finally setting url and route ${url}`);
                 // placeholder
                 setDefaultHomepage(url);
-                window.console.log(`finally setting url and route ${url}`);
                 DiscourseURL.routeTo(url);
               });
           }
