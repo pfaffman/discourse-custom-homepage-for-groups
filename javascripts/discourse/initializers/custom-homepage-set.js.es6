@@ -40,7 +40,7 @@ export default {
                 }
               })
               .catch(function (err) {
-                console.log({ err });
+                console.log("error on then", { err });
               })
               .finally(function () {
                 // placeholder
