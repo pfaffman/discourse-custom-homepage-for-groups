@@ -28,7 +28,6 @@ export default {
             window.console.log("map url", url);
             setDefaultHomepage(url);
             window.console.log("well aftermodel?");
-            DiscourseURL.routeTo(url);
           }
         }
       } else {
