@@ -28,7 +28,7 @@ export default {
             window.console.log("map url", url);
             setDefaultHomepage(url);
             window.console.log("well aftermodel?");
-            router.currentURL = url;
+            DiscourseURL.routeTo(url);
           }
         }
       } else {
