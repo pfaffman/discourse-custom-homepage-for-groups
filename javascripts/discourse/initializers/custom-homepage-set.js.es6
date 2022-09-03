@@ -34,7 +34,6 @@ export default {
               .then(function (result) {
                 window.console.log("result", result);
                 if (result) {
-                  let url = `/c/${result}`;
                   setDefaultHomepage(url);
                   window.console.log("setting url and route");
 
@@ -60,7 +59,6 @@ export default {
             .then(function (result) {
               window.console.log("reulst", result);
               if (Number.isInteger(result)) {
-                let url = `/c/${result}`;
                 setDefaultHomepage(url);
                 DiscourseURL.routeTo(url);
               }
@@ -81,7 +79,6 @@ export default {
             .then(function (result) {
               window.console.log("reulst", result);
               if (Number.isInteger(result)) {
-                let url = `/c/${result}`;
                 setDefaultHomepage(url);
                 DiscourseURL.routeTo(url);
               }
