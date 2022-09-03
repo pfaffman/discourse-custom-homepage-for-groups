@@ -33,7 +33,7 @@ export default {
             })
               .then(function (result) {
                 window.console.log("result", result);
-                if (Number.isInteger(result)) {
+                if (result) {
                   let url = `/c/${result}`;
                   setDefaultHomepage(url);
                   window.console.log("setting url and route");
