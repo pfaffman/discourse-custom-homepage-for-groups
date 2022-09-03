@@ -43,10 +43,7 @@ export default {
                 console.log("error on then", { err });
               })
               .finally(function () {
-                window.console.log(`finally setting url and route ${url}`);
                 // placeholder
-                setDefaultHomepage(url);
-                DiscourseURL.routeTo(url);
               });
           }
         }
