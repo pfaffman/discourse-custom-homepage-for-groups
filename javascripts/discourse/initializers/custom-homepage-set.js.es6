@@ -35,8 +35,7 @@ export default {
                 window.console.log("result", result);
                 if (result) {
                   setDefaultHomepage(url);
-                  window.console.log("setting url and route");
-
+                  window.console.log(`setting url and route ${url}`);
                   DiscourseURL.routeTo(url);
                 }
               })
@@ -45,6 +44,9 @@ export default {
               })
               .finally(function () {
                 // placeholder
+                setDefaultHomepage(url);
+                window.console.log(`finally setting url and route ${url}`);
+                DiscourseURL.routeTo(url);
               });
           }
         }
@@ -57,7 +59,7 @@ export default {
             type: "GET",
           })
             .then(function (result) {
-              window.console.log("reulst", result);
+              window.console.log("result", result);
               if (Number.isInteger(result)) {
                 setDefaultHomepage(url);
                 DiscourseURL.routeTo(url);
