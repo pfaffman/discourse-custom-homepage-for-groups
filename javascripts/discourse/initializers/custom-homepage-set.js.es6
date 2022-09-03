@@ -8,10 +8,11 @@ import mobile from "discourse/lib/mobile";
 
 export default {
   name: "discourse-custom-homepage",
-  afterModel: (model) => model.reload(),
   initialize(container) {
     withPluginApi("0.11.4", (api) => {
-      window.console.log("doing the cool thing!", mobile);
+      const router = container.lookup("router:main");
+      window.console.log("doing the cool thing!", router);
+
       const user = api.getCurrentUser();
       window.console.log("s,u", settings, user, settings.group_page_map);
       const { setDefaultHomepage } = require("discourse/lib/utilities");
@@ -26,6 +27,8 @@ export default {
             const url = mapEntry.split(":")[1];
             window.console.log("map url", url);
             setDefaultHomepage(url);
+            window.console.log("well aftermodel?");
+            router.currentURL = url;
           }
         }
       } else {
