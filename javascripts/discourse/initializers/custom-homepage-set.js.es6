@@ -27,7 +27,6 @@ export default {
             const url = mapEntry.split(":")[1];
             window.console.log("map url", url);
             setDefaultHomepage(url);
-            window.console.log("well routeTo", url);
             ajax(url, {
               type: "GET",
             })
@@ -49,13 +48,47 @@ export default {
         }
       } else {
         window.console.log("doing else", mobile.isMobileDevice);
-        if (mobile.isMobileDevice && settings.mobile_homepage) {
+        if (mobile.isMobileDevice && settings.mobile_homepage && !user) {
           window.console.log("setting mobile", settings.mobile_homepage);
           setDefaultHomepage(settings.mobile_homepage);
-        } else if (settings.anon_page) {
+          ajax(url, {
+            type: "GET",
+          })
+            .then(function (result) {
+              window.console.log("reulst", result);
+              if (Number.isInteger(result)) {
+                let url = `/c/${result}`;
+                setDefaultHomepage(url);
+                DiscourseURL.routeTo(url);
+              }
+            })
+            .catch(function (err) {
+              console.log({ err });
+            })
+            .finally(function () {
+              // placeholder
+            });
+        } else if (settings.anon_page && !user) {
           window.console.log("setting anon", settings.mobile_homepage);
 
           setDefaultHomepage(settings.anon_page);
+          ajax(url, {
+            type: "GET",
+          })
+            .then(function (result) {
+              window.console.log("reulst", result);
+              if (Number.isInteger(result)) {
+                let url = `/c/${result}`;
+                setDefaultHomepage(url);
+                DiscourseURL.routeTo(url);
+              }
+            })
+            .catch(function (err) {
+              console.log({ err });
+            })
+            .finally(function () {
+              // placeholder
+            });
         }
       }
     });
