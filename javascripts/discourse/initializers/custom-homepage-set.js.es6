@@ -27,7 +27,24 @@ export default {
             const url = mapEntry.split(":")[1];
             window.console.log("map url", url);
             setDefaultHomepage(url);
-            window.console.log("well aftermodel?");
+            window.console.log("well routeTo", url);
+            ajax(url, {
+              type: "GET",
+            })
+              .then(function (result) {
+                window.console.log("reulst", result);
+                if (Number.isInteger(result)) {
+                  let url = `/c/${result}`;
+                  setDefaultHomepage(url);
+                  DiscourseURL.routeTo(url);
+                }
+              })
+              .catch(function (err) {
+                console.log({ err });
+              })
+              .finally(function () {
+                // placeholder
+              });
           }
         }
       } else {
