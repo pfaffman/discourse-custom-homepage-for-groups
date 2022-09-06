@@ -21,6 +21,7 @@ export default {
       window.console.log("s,u", settings, user, settings.group_page_map);
       const { setDefaultHomepage } = require("discourse/lib/utilities");
       if (user && user.primary_group_name) {
+        let isHomePage = null;
         if (settings.group_page_map) {
           window.console.log("map", settings.group_page_map);
           var groupMap = settings.group_page_map.replace(",", ":").split("|");
@@ -35,7 +36,6 @@ export default {
               type: "GET",
             })
               .then(function (result) {
-                let isHomePage = null;
                 if (router.currentURL === "/") {
                   isHomePage = true;
                   window.console.log("set homepage true");
@@ -70,9 +70,10 @@ export default {
           })
             .then(function (result) {
               window.console.log("result", result);
-              if (Number.isInteger(result)) {
-                setDefaultHomepage(url);
-                DiscourseURL.routeTo(url);
+              setDefaultHomepage(url);
+              if (router.currentURL === "/") {
+                isHomePage = true;
+                window.console.log("set homepage true for mobile");
               }
             })
             .catch(function (err) {
@@ -90,9 +91,10 @@ export default {
           })
             .then(function (result) {
               window.console.log("reulst", result);
-              if (Number.isInteger(result)) {
-                setDefaultHomepage(url);
-                DiscourseURL.routeTo(url);
+              setDefaultHomepage(url);
+              if (router.currentURL === "/") {
+                isHomePage = true;
+                window.console.log("set homepage true for mobile");
               }
             })
             .catch(function (err) {
