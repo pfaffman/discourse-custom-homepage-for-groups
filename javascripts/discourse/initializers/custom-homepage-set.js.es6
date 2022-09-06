@@ -20,8 +20,8 @@ export default {
       const user = api.getCurrentUser();
       window.console.log("s,u", settings, user, settings.group_page_map);
       const { setDefaultHomepage } = require("discourse/lib/utilities");
+      let isHomePage = null;
       if (user && user.primary_group_name) {
-        let isHomePage = null;
         if (settings.group_page_map) {
           window.console.log("map", settings.group_page_map);
           var groupMap = settings.group_page_map.replace(",", ":").split("|");
@@ -38,18 +38,9 @@ export default {
               .then(function (result) {
                 if (router.currentURL === "/") {
                   isHomePage = true;
-                  window.console.log("set homepage true");
-                }
-
-                window.console.log("result", result);
-                if (result) {
-                  window.console.log(`setting url and route ${url}`);
                   setDefaultHomepage(url);
-                  window.console.log(`setting url ${url}, ${isHomePage}`);
-                  if (isHomePage) {
-                    window.console.log(`doing redirect`);
-                    DiscourseURL.redirectTo(url);
-                  }
+                  window.console.log("set homepage true");
+                  DiscourseURL.redirectTo(url);
                 }
               })
               .catch(function (err) {
@@ -64,16 +55,17 @@ export default {
         window.console.log("doing else", mobile.isMobileDevice);
         if (mobile.isMobileDevice && settings.mobile_homepage && !user) {
           window.console.log("setting mobile", settings.mobile_homepage);
+          const url = settings.mobile_homepage;
           setDefaultHomepage(settings.mobile_homepage);
           ajax(url, {
             type: "GET",
           })
             .then(function (result) {
-              window.console.log("result", result);
+              window.console.log("url", router.currentURL);
               setDefaultHomepage(url);
               if (router.currentURL === "/") {
-                isHomePage = true;
-                window.console.log("set homepage true for mobile");
+                window.console.log(`doing redirect`);
+                DiscourseURL.redirectTo(url);
               }
             })
             .catch(function (err) {
@@ -84,7 +76,7 @@ export default {
             });
         } else if (settings.anon_page && !user) {
           window.console.log("setting anon", settings.mobile_homepage);
-
+          const url = settings.anon_page;
           setDefaultHomepage(settings.anon_page);
           ajax(url, {
             type: "GET",
@@ -93,8 +85,8 @@ export default {
               window.console.log("reulst", result);
               setDefaultHomepage(url);
               if (router.currentURL === "/") {
-                isHomePage = true;
-                window.console.log("set homepage true for mobile");
+                window.console.log("set homepage true for anon");
+                DiscourseURL.redirectTo(url);
               }
             })
             .catch(function (err) {
