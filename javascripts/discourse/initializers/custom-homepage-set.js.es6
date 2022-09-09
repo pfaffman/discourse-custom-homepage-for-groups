@@ -5,6 +5,7 @@ import { withPluginApi } from "discourse/lib/plugin-api";
 import { computed } from "@ember/object";
 import getURL from "discourse-common/lib/get-url";
 import mobile from "discourse/lib/mobile";
+import PreloadStore from "discourse/lib/preload-store";
 
 export default {
   name: "discourse-custom-homepage",
@@ -22,61 +23,18 @@ export default {
           if (mapEntry) {
             const url = mapEntry.split(":")[1];
             setDefaultHomepage(url);
-            // pull in a page so that the router gets defined
-            // TODO: write this as a function to be called in all 3 cases
-            ajax(`${url}.json`, {
-              type: "GET",
-            })
-              .then(function (result) {
-                if (router.currentURL === "/") {
-                  DiscourseURL.redirectTo(url);
-                }
-              })
-              .catch(function (err) {
-                console.log("error on then", { err });
-              })
-              .finally(function () {
-                // placeholder
-              });
+            PreloadStore.remove("topic_list");
           }
         }
       } else {
         if (mobile.isMobileDevice && settings.mobile_homepage && !user) {
           const url = settings.mobile_homepage;
           setDefaultHomepage(url);
-          ajax(`${url}.json`, {
-            type: "GET",
-          })
-            .then(function (result) {
-              setDefaultHomepage(url);
-              if (router.currentURL === "/") {
-                DiscourseURL.redirectTo(url);
-              }
-            })
-            .catch(function (err) {
-              console.log({ err });
-            })
-            .finally(function () {
-              // placeholder
-            });
+          PreloadStore.remove("topic_list");
         } else if (settings.anon_page && !user) {
           const url = settings.anon_page;
           setDefaultHomepage(url);
-          ajax(`${url}.json`, {
-            type: "GET",
-          })
-            .then(function (result) {
-              setDefaultHomepage(url);
-              if (router.currentURL === "/") {
-                DiscourseURL.redirectTo(url);
-              }
-            })
-            .catch(function (err) {
-              console.log({ err });
-            })
-            .finally(function () {
-              // placeholder
-            });
+          PreloadStore.remove("topic_list");
         }
       }
     });
