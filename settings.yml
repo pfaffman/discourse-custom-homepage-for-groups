@@ -1,5 +1,5 @@
 custom_default_homepage:
- description: "Custom homepage for all users.<br>Use a relative URL.<br>If left blank, will use site/user default."
+  description: "Custom homepage for all users.<br>Use a relative URL.<br>If left blank, will use site/user default."
   type: string
   default: ""
 anon_page:
