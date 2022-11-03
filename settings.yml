@@ -1,12 +1,16 @@
-group_page_map:
-  description: "This applies when the primary group of the user.<br>Input it as group_name:relative_URL. Can be several entries.<br>For example, trust_level_1:/latest.<br>Can only be used for internal pages."
-  type: list
+custom_default_homepage:
+  description: "Custom homepage for all users.<br>Use a relative URL.<br>If left blank, will use site/user default."
+  type: string
   default: ""
 anon_page:
-  description: "The relative URL for users who aren't logged in.<br>If left blank, will use site default."
+  description: "The relative URL for users who aren't logged in.<br>If left blank, will be the same as above."
   type: string
   default: ""
 mobile_homepage:
   description: "What mobile users see. Relative URL.<br>If left blank, will be the same as above"
   type: string
+  default: ""
+group_page_map:
+  description: "This applies only when the user has the group set as primary.<br>Input it as group_name:relative_URL. Can be several entries.<br>i.e. trust_level_1:/latest.<br>Can only be used for internal pages."
+  type: list
   default: ""
