@@ -1,4 +1,4 @@
-# discourse-custom-homepage
+# discourse-custom-homepage-for-groups
 This Discourse Theme Component allows customisation of the default homepage for users.
 
 It allows you to control the desktop homepage by primary group and for anonymous users.
