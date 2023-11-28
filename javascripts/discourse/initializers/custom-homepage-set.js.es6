@@ -1,11 +1,6 @@
-import { setDefaultHomepage } from "discourse/lib/utilities";
-import { ajax } from "discourse/lib/ajax";
-import DiscourseURL from "discourse/lib/url";
 import { withPluginApi } from "discourse/lib/plugin-api";
-import { computed } from "@ember/object";
-import getURL from "discourse-common/lib/get-url";
-import mobile from "discourse/lib/mobile";
 import PreloadStore from "discourse/lib/preload-store";
+import { setDefaultHomepage } from "discourse/lib/utilities";
 
 export default {
   name: "discourse-custom-homepage",
@@ -13,7 +8,8 @@ export default {
     withPluginApi("0.11.4", (api) => {
       const router = container.lookup("router:main");
       const user = api.getCurrentUser();
-      const { setDefaultHomepage } = require("discourse/lib/utilities");
+      if (user && user.primary_group_name) {
+        if (settings.group_page_map) {
 
       if (settings.custom_default_homepage) {
         const url = settings.custom_default_homepage;
@@ -41,6 +37,7 @@ export default {
           );
           if (mapEntry) {
             const url = mapEntry.split(":")[1];
+            if (url.charAt(0) == "/") url = url.substr(1);
             setDefaultHomepage(url);
             PreloadStore.remove("topic_list");
           }
