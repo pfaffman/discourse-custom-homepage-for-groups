@@ -1,6 +1,6 @@
+import mobile from "discourse/lib/mobile";
 import { withPluginApi } from "discourse/lib/plugin-api";
 import PreloadStore from "discourse/lib/preload-store";
-import { setDefaultHomepage } from "discourse/lib/utilities";
 
 export default {
   name: "discourse-custom-homepage",
@@ -8,23 +8,24 @@ export default {
     withPluginApi("0.11.4", (api) => {
       const router = container.lookup("router:main");
       const user = api.getCurrentUser();
-      if (user && user.primary_group_name) {
-        if (settings.group_page_map) {
+      const { setDefaultHomepage } = require("discourse/lib/utilities");
+
+      window.console.log("checking default");
 
       if (settings.custom_default_homepage) {
-        const url = settings.custom_default_homepage;
+        const url = settings.custom_default_homepage.replace(/^\/+/g, '');
         setDefaultHomepage(url);
         PreloadStore.remove("topic_list");
       }
 
       if (!user && settings.anon_page) {
-        const url = settings.anon_page;
+        const url = settings.anon_page.replace(/^\/+/g, '');
         setDefaultHomepage(url);
         PreloadStore.remove("topic_list");
       }
 
       if (mobile.isMobileDevice && settings.mobile_homepage) {
-        const url = settings.mobile_homepage;
+        const url = settings.mobile_homepage.replace(/^\/+/g, '');
         setDefaultHomepage(url);
         PreloadStore.remove("topic_list");
       }
@@ -36,8 +37,8 @@ export default {
             RegExp(user.primary_group_name).test(value)
           );
           if (mapEntry) {
-            const url = mapEntry.split(":")[1];
-            if (url.charAt(0) == "/") url = url.substr(1);
+            const url = mapEntry.split(":")[1].replace(/^\/+/g, '');
+            window.console.log("setting url", url);
             setDefaultHomepage(url);
             PreloadStore.remove("topic_list");
           }
