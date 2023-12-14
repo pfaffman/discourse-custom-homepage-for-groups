@@ -11,19 +11,19 @@ export default {
       const { setDefaultHomepage } = require("discourse/lib/utilities");
 
       if (settings.custom_default_homepage) {
-        const url = settings.custom_default_homepage.replace(/^\/+/g, '');
+        const url = settings.custom_default_homepage.replace(/^\/+/g, "");
         setDefaultHomepage(url);
         PreloadStore.remove("topic_list");
       }
 
       if (!user && settings.anon_page) {
-        const url = settings.anon_page.replace(/^\/+/g, '');
+        const url = settings.anon_page.replace(/^\/+/g, "");
         setDefaultHomepage(url);
         PreloadStore.remove("topic_list");
       }
 
       if (mobile.isMobileDevice && settings.mobile_homepage) {
-        const url = settings.mobile_homepage.replace(/^\/+/g, '');
+        const url = settings.mobile_homepage.replace(/^\/+/g, "");
         setDefaultHomepage(url);
         PreloadStore.remove("topic_list");
       }
@@ -35,7 +35,7 @@ export default {
             RegExp(user.primary_group_name).test(value)
           );
           if (mapEntry) {
-            const url = mapEntry.split(":")[1].replace(/^\/+/g, '');
+            const url = mapEntry.split(":")[1].replace(/^\/+/g, "");
             window.console.log("setting url", url);
             setDefaultHomepage(url);
             PreloadStore.remove("topic_list");
