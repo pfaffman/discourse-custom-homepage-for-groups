@@ -4,13 +4,11 @@ import PreloadStore from "discourse/lib/preload-store";
 
 export default {
   name: "discourse-custom-homepage",
-  initialize(container) {
+  initialize() {
     withPluginApi("0.11.4", (api) => {
-      const router = container.lookup("router:main");
+      // const router = container.lookup("router:main");
       const user = api.getCurrentUser();
       const { setDefaultHomepage } = require("discourse/lib/utilities");
-
-      window.console.log("checking default");
 
       if (settings.custom_default_homepage) {
         const url = settings.custom_default_homepage.replace(/^\/+/g, '');
@@ -32,7 +30,7 @@ export default {
 
       if (user) {
         if (user.primary_group_name && settings.group_page_map) {
-          var groupMap = settings.group_page_map.replace(",", ":").split("|");
+          let groupMap = settings.group_page_map.replace(",", ":").split("|");
           const mapEntry = groupMap.find((value) =>
             RegExp(user.primary_group_name).test(value)
           );
