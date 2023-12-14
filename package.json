@@ -1,0 +1,13 @@
+{
+  "name": "Custom Homepage for Groups",
+  "version": "0.5",
+  "repository": "https://github.com/pfaffman/discourse-custom-homepage-for-groups",
+  "author": "pfaffman",
+  "license": "MIT",
+  "devDependencies": {
+    "@discourse/lint-configs": "^1.3.1",
+    "ember-template-lint": "^5.13.0",
+    "eslint": "^8.55.0",
+    "prettier": "^2.8.8"
+  }
+}
