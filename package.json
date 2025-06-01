@@ -1,13 +1,17 @@
 {
-  "name": "custom-homepage-for-groups",
-  "version": "0.5",
-  "repository": "https://github.com/pfaffman/discourse-custom-homepage-for-groups",
-  "author": "pfaffman",
-  "license": "MIT",
+  "private": true,
   "devDependencies": {
-    "@discourse/lint-configs": "^1.3.1",
-    "ember-template-lint": "^5.13.0",
-    "eslint": "^8.55.0",
-    "prettier": "^2.8.8"
-  }
+    "@discourse/lint-configs": "2.21.0",
+    "ember-template-lint": "7.7.0",
+    "eslint": "9.27.0",
+    "prettier": "3.5.3",
+    "stylelint": "16.19.1"
+  },
+  "engines": {
+    "node": ">= 22",
+    "npm": "please-use-pnpm",
+    "yarn": "please-use-pnpm",
+    "pnpm": "9.x"
+  },
+  "packageManager": "pnpm@9.15.5"
 }
