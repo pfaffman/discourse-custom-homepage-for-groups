@@ -6,10 +6,6 @@ anon_page:
   description: "The relative URL for users who aren't logged in.<br>If left blank, will be the same as above."
   type: string
   default: ""
-mobile_homepage:
-  description: "What mobile users see. Relative URL.<br>If left blank, will be the same as above"
-  type: string
-  default: ""
 group_page_map:
   description: "This applies only when the user has the group set as primary.<br>Input it as group_name:relative_URL. Can be several entries.<br>i.e. trust_level_1:/latest.<br>Can only be used for internal pages."
   type: list
