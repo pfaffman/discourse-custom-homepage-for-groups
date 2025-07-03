@@ -4,14 +4,12 @@
   "license_url": "https://github.com/pfaffman/discourse-custom-homepage-for-groups/blob/main/LICENSE",
   "about_url": "https://meta.discourse.org/t/custom-homepage-for-groups/199623",
   "authors": "pfaffman",
+  "version": "0.1.0",
   "theme_version": null,
   "minimum_discourse_version": null,
   "maximum_discourse_version": null,
-  "assets": {
-  },
-  "color_schemes": {
-  },
-  "modifiers": {
-  },
+  "assets": {},
+  "color_schemes": {},
+  "modifiers": {},
   "learn_more": "https://meta.discourse.org/t/beginners-guide-to-using-discourse-themes/91966"
 }

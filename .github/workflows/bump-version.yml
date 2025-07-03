@@ -1,0 +1,29 @@
+name: Bump about.json Version
+
+on:
+  push:
+    branches:
+      - main # or 'master' or any branch you want
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Bump version in about.json
+        run: |
+          FILE="about.json"
+          VERSION=$(jq -r '.version' $FILE)
+          if [[ "$VERSION" == "null" ]]; then VERSION="0.0.0"; fi
+          NEW_VERSION=$(echo $VERSION | awk -F. -v OFS=. '{$NF+=1; print}')
+          jq --arg v "$NEW_VERSION" '.version = $v' $FILE > tmp.json && mv tmp.json $FILE
+          git add $FILE
+          git commit -m "chore: bump version to $NEW_VERSION" || echo "No changes to commit"
+          git push
